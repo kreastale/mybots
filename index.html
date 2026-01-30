@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>أسعار البوتات | Bot Pricing</title>
+    <style>
+        :root {
+            --bg-color: #0f0f1a;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --primary-blue: #00d2ff;
+            --primary-orange: #ff9472;
+            --primary-purple: #8e2de2;
+        }
+
+        body {
+            background: radial-gradient(circle at center, #1a1a2e 0%, var(--bg-color) 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px 20px;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* العنوان المتحرك */
+        .main-title {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 50px;
+            text-align: center;
+            background: linear-gradient(to right, #00d2ff, #8e2de2, #ff9472, #00d2ff);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-flow 3s linear infinite;
+            filter: drop-shadow(0 0 15px rgba(142, 45, 226, 0.3));
+        }
+
+        @keyframes gradient-flow {
+            0% { background-position: 0% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .lang-switch {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+            z-index: 100;
+        }
+
+        .lang-switch:hover { background: white; color: black; }
+
+        .container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 40px 30px;
+            width: 260px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            display: block;
+            margin: 10px 0;
+        }
+
+        .normal .price { color: var(--primary-blue); }
+        .comfort .price { color: var(--primary-orange); }
+        .system .price { color: var(--primary-purple); }
+
+        .btn-link {
+            display: block;
+            margin-top: 25px;
+            padding: 15px 30px;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.08);
+            color: white;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .card:hover .btn-link { background: white; color: black; }
+
+        /* قسم الشروط الجديد */
+        .terms-section {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            text-align: right;
+            transition: 0.3s;
+        }
+
+        .terms-section h3 {
+            margin-top: 0;
+            color: #ff9472;
+            font-size: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+        }
+
+        .terms-list {
+            list-style: none;
+            padding: 0;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .terms-list li::before {
+            content: "•";
+            color: var(--primary-blue);
+            font-weight: bold;
+            display: inline-block; 
+            width: 1em;
+            margin-right: -1em;
+        }
+
+        /* لغة إنجليزية */
+        body.en .terms-section { text-align: left; }
+    </style>
+</head>
+<body id="body">
+
+    <button class="lang-switch" onclick="toggleLanguage()">English</button>
+
+    <h1 id="mainTitle" class="main-title">أسعار البوتات</h1>
+
+    <div class="container">
+        <div class="card normal">
+            <h2 id="t1">باقة عادي</h2>
+            <div class="price-box">
+                <span class="price">10k</span>
+                <span id="t2" class="credit-label">كريديت</span>
+            </div>
+            <a href="https://discord.gg/dDw9vyQ4HR" target="_blank" id="t3" class="btn-link">اطلب الآن</a>
+        </div>
+
+        <div class="card comfort">
+            <h2 id="t4">باقة الراحة</h2>
+            <div class="price-box">
+                <span class="price">50k</span>
+                <span id="t5" class="credit-label">كريديت</span>
+            </div>
+            <a href="https://discord.gg/dDw9vyQ4HR" target="_blank" id="t6" class="btn-link">اطلب الآن</a>
+        </div>
+
+        <div class="card system">
+            <h2 id="t7">باقة السيستم</h2>
+            <div class="price-box">
+                <span class="price">100k</span>
+                <span id="t8" class="credit-label">كريديت</span>
+            </div>
+            <a href="https://discord.gg/dDw9vyQ4HR" target="_blank" id="t9" class="btn-link">اطلب الآن</a>
+        </div>
+    </div>
+
+    <div class="terms-section">
+        <h3 id="hTerms">شروط قبول الطلب</h3>
+        <ul class="terms-list">
+            <li id="li1">ما يكون الطلب إعجازي أو مستحيل.</li>
+            <li id="li2">البوتات بدون لوحة تحكم (Dashboard).</li>
+            <li id="li3">ممنوع طلب أي نوع من التخفيضات.</li>
+        </ul>
+    </div>
+
+    <script>
+        let currentLang = 'ar';
+        const translations = {
+            ar: { 
+                main: "أسعار البوتات", btn: "English", 
+                t1: "باقة عادي", t2: "كريديت", t3: "اطلب الآن", 
+                t4: "باقة الراحة", t5: "كريديت", t6: "اطلب الآن", 
+                t7: "باقة السيستم", t8: "كريديت", t9: "اطلب الآن",
+                hTerms: "شروط قبول الطلب",
+                li1: "ما يكون الطلب إعجازي أو مستحيل.",
+                li2: "البوتات بدون لوحة تحكم (Dashboard).",
+                li3: "ممنوع طلب أي نوع من التخفيضات."
+            },
+            en: { 
+                main: "Bot Pricing", btn: "عربي", 
+                t1: "Normal Plan", t2: "Credit", t3: "Order Now", 
+                t4: "Comfort Plan", t5: "Credit", t6: "Order Now", 
+                t7: "System Plan", t8: "Credit", t9: "Order Now",
+                hTerms: "Order Terms",
+                li1: "The request must not be impossible or miraculous.",
+                li2: "Bots do not include a Dashboard.",
+                li3: "Discounts or bargaining are not allowed."
+            }
+        };
+
+        function toggleLanguage() {
+            const body = document.getElementById('body');
+            const btn = document.querySelector('.lang-switch');
+            const mainT = document.getElementById('mainTitle');
+            const hTerms = document.getElementById('hTerms');
+            
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            body.style.direction = currentLang === 'ar' ? 'rtl' : 'ltr';
+            body.classList.toggle('en');
+            
+            btn.innerText = translations[currentLang].btn;
+            mainT.innerText = translations[currentLang].main;
+            hTerms.innerText = translations[currentLang].hTerms;
+
+            for (let i = 1; i <= 9; i++) {
+                document.getElementById('t' + i).innerText = translations[currentLang]['t' + i];
+            }
+            for (let i = 1; i <= 3; i++) {
+                document.getElementById('li' + i).innerText = translations[currentLang]['li' + i];
+            }
+        }
+    </script>
+</body>
+</html>
