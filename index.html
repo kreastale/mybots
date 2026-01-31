@@ -25,7 +25,6 @@
             overflow-x: hidden;
         }
 
-        /* العنوان المتحرك */
         .main-title {
             font-size: clamp(2.5rem, 8vw, 4rem);
             font-weight: 900;
@@ -39,10 +38,7 @@
             filter: drop-shadow(0 0 15px rgba(142, 45, 226, 0.3));
         }
 
-        @keyframes gradient-flow {
-            0% { background-position: 0% center; }
-            100% { background-position: 200% center; }
-        }
+        @keyframes gradient-flow { 0% { background-position: 0% center; } 100% { background-position: 200% center; } }
 
         .lang-switch {
             position: fixed;
@@ -54,20 +50,17 @@
             border-radius: 30px;
             color: white;
             cursor: pointer;
-            font-weight: bold;
-            backdrop-filter: blur(5px);
-            transition: 0.3s;
             z-index: 100;
+            backdrop-filter: blur(5px);
         }
-
-        .lang-switch:hover { background: white; color: black; }
 
         .container {
             display: flex;
-            gap: 30px;
+            gap: 25px;
             flex-wrap: wrap;
             justify-content: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
+            width: 100%;
         }
 
         .card {
@@ -75,80 +68,64 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 25px;
-            padding: 40px 30px;
-            width: 260px;
+            padding: 30px 20px;
+            width: 280px;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: 0.4s;
+            display: flex;
+            flex-direction: column;
         }
 
-        .card:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-            border-color: rgba(255, 255, 255, 0.4);
-        }
+        .card:hover { transform: translateY(-10px); border-color: rgba(255, 255, 255, 0.3); }
 
-        .price {
-            font-size: 3.5rem;
-            font-weight: 800;
-            display: block;
-            margin: 10px 0;
-        }
-
+        .price { font-size: 3rem; font-weight: 800; display: block; margin: 10px 0; }
         .normal .price { color: var(--primary-blue); }
         .comfort .price { color: var(--primary-orange); }
         .system .price { color: var(--primary-purple); }
 
-        .btn-link {
-            display: block;
-            margin-top: 25px;
-            padding: 15px 30px;
-            border-radius: 50px;
-            background: rgba(255,255,255,0.08);
-            color: white;
-            font-weight: bold;
-            text-decoration: none;
-            transition: 0.3s;
+        .features-list {
+            text-align: right;
+            margin: 20px 0;
+            padding: 0;
+            list-style: none;
+            flex-grow: 1;
         }
 
+        body.en .features-list { text-align: left; }
+
+        .features-list li {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        .features-list li::before {
+            content: "✓";
+            margin-left: 10px;
+            color: #4ade80;
+        }
+        body.en .features-list li::before { margin-left: 0; margin-right: 10px; }
+
+        .btn-link {
+            padding: 12px;
+            border-radius: 50px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
         .card:hover .btn-link { background: white; color: black; }
 
-        /* قسم الشروط الجديد */
         .terms-section {
             background: rgba(255, 255, 255, 0.03);
             border: 1px dashed rgba(255, 255, 255, 0.15);
             border-radius: 20px;
-            padding: 30px;
+            padding: 25px;
             max-width: 600px;
             width: 90%;
             text-align: right;
-            transition: 0.3s;
         }
-
-        .terms-section h3 {
-            margin-top: 0;
-            color: #ff9472;
-            font-size: 1.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 10px;
-        }
-
-        .terms-list {
-            list-style: none;
-            padding: 0;
-            line-height: 1.8;
-            font-size: 1.1rem;
-        }
-
-        .terms-list li::before {
-            content: "•";
-            color: var(--primary-blue);
-            font-weight: bold;
-            display: inline-block; 
-            width: 1em;
-            margin-right: -1em;
-        }
-
-        /* لغة إنجليزية */
         body.en .terms-section { text-align: left; }
     </style>
 </head>
@@ -161,86 +138,84 @@
     <div class="container">
         <div class="card normal">
             <h2 id="t1">باقة عادي</h2>
-            <div class="price-box">
-                <span class="price">10k</span>
-                <span id="t2" class="credit-label">كريديت</span>
-            </div>
+            <span class="price">20k</span>
+            <ul class="features-list">
+                <li id="f1">10 أوامر مختلفة</li>
+                <li id="f2">إستضافة مجانية</li>
+            </ul>
             <a href="https://discord.gg/dDw9vyQ4HR" target="_blank" id="t3" class="btn-link">اطلب الآن</a>
         </div>
 
         <div class="card comfort">
             <h2 id="t4">باقة الراحة</h2>
-            <div class="price-box">
-                <span class="price">50k</span>
-                <span id="t5" class="credit-label">كريديت</span>
-            </div>
+            <span class="price">40k</span>
+            <ul class="features-list">
+                <li id="f3">25 أمر مختلف</li>
+                <li id="f4">صورة خاصة للبوت</li>
+                <li id="f5">إستضافة دائمة</li>
+            </ul>
             <a href="https://discord.gg/dDw9vyQ4HR" target="_blank" id="t6" class="btn-link">اطلب الآن</a>
         </div>
 
         <div class="card system">
             <h2 id="t7">باقة السيستم</h2>
-            <div class="price-box">
-                <span class="price">100k</span>
-                <span id="t8" class="credit-label">كريديت</span>
-            </div>
+            <span class="price">70k</span>
+            <ul class="features-list">
+                <li id="f6">50 أمر مختلف</li>
+                <li id="f7">صورة خاصة للبوت</li>
+                <li id="f8">إستضافة مجانية</li>
+            </ul>
             <a href="https://discord.gg/dDw9vyQ4HR" target="_blank" id="t9" class="btn-link">اطلب الآن</a>
         </div>
     </div>
 
     <div class="terms-section">
         <h3 id="hTerms">شروط قبول الطلب</h3>
-        <ul class="terms-list">
-            <li id="li1">ما يكون الطلب إعجازي أو مستحيل.</li>
-            <li id="li2">البوتات بدون لوحة تحكم (Dashboard).</li>
-            <li id="li3">ممنوع طلب أي نوع من التخفيضات.</li>
+        <ul style="list-style: none; padding: 0;" id="termsList">
+            <li id="li1">• ما يكون الطلب إعجازي أو مستحيل.</li>
+            <li id="li2">• البوتات بدون لوحة تحكم (Dashboard).</li>
+            <li id="li3">• ممنوع طلب أي نوع من التخفيضات.</li>
         </ul>
     </div>
 
     <script>
         let currentLang = 'ar';
         const translations = {
-            ar: { 
-                main: "أسعار البوتات", btn: "English", 
-                t1: "باقة عادي", t2: "كريديت", t3: "اطلب الآن", 
-                t4: "باقة الراحة", t5: "كريديت", t6: "اطلب الآن", 
-                t7: "باقة السيستم", t8: "كريديت", t9: "اطلب الآن",
-                hTerms: "شروط قبول الطلب",
-                li1: "ما يكون الطلب إعجازي أو مستحيل.",
-                li2: "البوتات بدون لوحة تحكم (Dashboard).",
-                li3: "ممنوع طلب أي نوع من التخفيضات."
+            ar: {
+                main: "أسعار البوتات", btn: "English",
+                t1: "باقة عادي", t3: "اطلب الآن",
+                t4: "باقة الراحة", t6: "اطلب الآن",
+                t7: "باقة السيستم", t9: "اطلب الآن",
+                f1: "10 أوامر مختلفة", f2: "إستضافة مجانية",
+                f3: "25 أمر مختلف", f4: "صورة خاصة للبوت", f5: "إستضافة دائمة",
+                f6: "50 أمر مختلف", f7: "صورة خاصة للبوت", f8: "إستضافة مجانية",
+                hTerms: "شروط قبول الطلب", li1: "• ما يكون الطلب إعجازي أو مستحيل.", li2: "• البوتات بدون لوحة تحكم (Dashboard).", li3: "• ممنوع طلب أي نوع من التخفيضات."
             },
-            en: { 
-                main: "Bot Pricing", btn: "عربي", 
-                t1: "Normal Plan", t2: "Credit", t3: "Order Now", 
-                t4: "Comfort Plan", t5: "Credit", t6: "Order Now", 
-                t7: "System Plan", t8: "Credit", t9: "Order Now",
-                hTerms: "Order Terms",
-                li1: "The request must not be impossible or miraculous.",
-                li2: "Bots do not include a Dashboard.",
-                li3: "Discounts or bargaining are not allowed."
+            en: {
+                main: "Bot Pricing", btn: "عربي",
+                t1: "Normal Plan", t3: "Order Now",
+                t4: "Comfort Plan", t6: "Order Now",
+                t7: "System Plan", t9: "Order Now",
+                f1: "10 Different Commands", f2: "Free Hosting",
+                f3: "25 Different Commands", f4: "Custom Bot Image", f5: "Permanent Hosting",
+                f6: "50 Different Commands", f7: "Custom Bot Image", f8: "Free Hosting",
+                hTerms: "Order Terms", li1: "• No impossible requests.", li2: "• No Dashboard included.", li3: "• No discounts allowed."
             }
         };
 
         function toggleLanguage() {
             const body = document.getElementById('body');
-            const btn = document.querySelector('.lang-switch');
-            const mainT = document.getElementById('mainTitle');
-            const hTerms = document.getElementById('hTerms');
-            
             currentLang = currentLang === 'ar' ? 'en' : 'ar';
             body.style.direction = currentLang === 'ar' ? 'rtl' : 'ltr';
             body.classList.toggle('en');
             
-            btn.innerText = translations[currentLang].btn;
-            mainT.innerText = translations[currentLang].main;
-            hTerms.innerText = translations[currentLang].hTerms;
+            document.querySelector('.lang-switch').innerText = translations[currentLang].btn;
+            document.getElementById('mainTitle').innerText = translations[currentLang].main;
+            document.getElementById('hTerms').innerText = translations[currentLang].hTerms;
 
-            for (let i = 1; i <= 9; i++) {
-                document.getElementById('t' + i).innerText = translations[currentLang]['t' + i];
-            }
-            for (let i = 1; i <= 3; i++) {
-                document.getElementById('li' + i).innerText = translations[currentLang]['li' + i];
-            }
+            ["t1","t3","t4","t6","t7","t9","f1","f2","f3","f4","f5","f6","f7","f8","li1","li2","li3"].forEach(id => {
+                document.getElementById(id).innerText = translations[currentLang][id];
+            });
         }
     </script>
 </body>
